@@ -22,8 +22,10 @@ trabajo: `skills/install.sh`). El script:
 - es idempotente: si el symlink ya apunta aquí, no hace nada;
 - convierte en symlink una copia antigua de la misma skill (la guarda antes como
   `<skill>.bak-<fecha>`);
-- **avisa y no toca** una carpeta que no sea symlink si no puede confirmar que es una copia
-  de esta skill (pasa `--force` para respaldarla y sustituirla igualmente).
+- re-enlaza un symlink roto o que apunta a otro clon de este repo;
+- **avisa y no toca** un symlink que apunta a otro sitio, ni una carpeta que no pueda
+  confirmar como copia de esta skill (pasa `--force` para sustituirlos igualmente; las
+  carpetas se respaldan antes).
 
 Reinicia Claude Code después de instalar para que cargue las skills.
 
