@@ -23,6 +23,12 @@ con fecha. Lo que se convierte en regla pasa a `standards/`.
 
 ## Claude Code
 
+- Al migrar un espacio de trabajo a otra estructura de carpetas (o de máquina), lo que
+  no viaja con git hay que inventariarlo antes de borrar nada: memorias de todas las
+  claves de proyecto en `~/.claude/projects/`, skills locales (`~/.claude/skills/`,
+  `~/.agents/skills/`, `.claude/skills/` y `.agents/skills/` de cada repo),
+  `settings.local.json`, personalizaciones de BMAD y trabajo sin subir. Cada cosa va a
+  la documentación del proyecto, a este repo o se descarta. (2026-10-06)
 - Las memorias se indexan por la ruta absoluta del proyecto: al mover o renombrar la
   carpeta donde se abre Claude Code hay que copiarlas a la clave nueva en
   `~/.claude/projects/`. (2026-10-06)

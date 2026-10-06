@@ -39,9 +39,16 @@ for skill_md in "$src_dir"/*/SKILL.md; do
       unchanged=$((unchanged + 1))
       continue
     fi
-    ln -sfn "$skill_path" "$target"
-    echo "relinked  $name -> $skill_path"
-    linked=$((linked + 1))
+    # Relink only a dangling link or one into another checkout of this repo
+    # (<repo>/skills/<name>, with ARCHITECTURE-INDEX.md at <repo>/).
+    if [ "$force" -eq 1 ] || [ -z "$current" ] || [ -f "$current/../../ARCHITECTURE-INDEX.md" ]; then
+      ln -sfn "$skill_path" "$target"
+      echo "relinked  $name -> $skill_path"
+      linked=$((linked + 1))
+    else
+      echo "WARNING   $name: $target links to $current, not to this repo; left untouched (use --force to replace it)" >&2
+      skipped=$((skipped + 1))
+    fi
     continue
   fi
 
